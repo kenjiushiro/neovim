@@ -176,6 +176,8 @@ local pack_use = function()
     -- UI
     -----------------------------------------------------------------------------//
     use "rafamadriz/themes.nvim"
+    use "morhetz/gruvbox"
+    use "joshdick/onedark.vim"
     use {
         "rafamadriz/statusline",
         config = function()
@@ -202,6 +204,8 @@ local pack_use = function()
     -- General plugins {{{1
     -----------------------------------------------------------------------------//
     use { "kevinhwang91/nvim-bqf", ft = "qf" }
+    use { 'michaelb/sniprun', run = 'bash ./install.sh'}
+    use { "tpope/vim-repeat" }
     use {
         "ahmedkhalf/project.nvim",
         event = "BufRead",
