@@ -1,5 +1,6 @@
 ### Install
 
+```
 8888888b.                    d8b d8b 888     888 d8b
 888   Y88b                   Y8P Y8P 888     888 Y8P
 888    888                           888     888
@@ -11,6 +12,7 @@
                              888
                             d88P
                           888P"
+```
 
 ```sh
 curl -sLf https://raw.githubusercontent.com/kenjiushiro/neovim/main/utils/install.sh | sh
