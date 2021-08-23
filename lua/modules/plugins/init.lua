@@ -116,7 +116,10 @@ local pack_use = function()
     -----------------------------------------------------------------------------//
     use { "psliwka/vim-smoothie" }
     use { "tpope/vim-surround"}
+    use { "terryma/vim-multiple-cursors" }
     use { "machakann/vim-sandwich", event = "BufRead" }
+    use { "tpope/vim-speeddating" }
+    use { "Konfekt/vim-CtrlXA" }
     use {
         "windwp/nvim-autopairs",
         after = "nvim-compe",
