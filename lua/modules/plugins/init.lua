@@ -67,6 +67,14 @@ local pack_use = function()
     -- Utils {{{1
     -----------------------------------------------------------------------------//
     use { "haya14busa/is.vim", keys = { "/", "*", "#" } }
+    use { "knubie/vim-kitty-navigator", run= 'cp ./*.py ~/.config/kitty/' }
+    use {
+        'phaazon/hop.nvim',
+        as = 'hop',
+        config = function()
+            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+   }
     use { "christoomey/vim-tmux-navigator" }
     use {
         "rhysd/clever-f.vim",
@@ -115,7 +123,6 @@ local pack_use = function()
     -- Improve Editing {{{1
     -----------------------------------------------------------------------------//
     use { "psliwka/vim-smoothie" }
-    use { "tpope/vim-surround"}
     use { "terryma/vim-multiple-cursors" }
     use { "machakann/vim-sandwich", event = "BufRead" }
     use { "tpope/vim-speeddating" }

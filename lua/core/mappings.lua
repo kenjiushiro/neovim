@@ -14,6 +14,8 @@ vim.g.mapleader = " "
 -----------------------------------------------------------------------------//
 as.map("n", "L", "$")
 as.map("n", "H", "0")
+as.map("v", "L", "$")
+as.map("v", "H", "0")
 as.map("n", "Y", "y$")
 as.map("v", "Y", "<ESC>y$gv")
 as.map("n", "Q", "<Nop>")
@@ -92,6 +94,8 @@ as.map("n", "<leader>b[", ":bp<CR>") -- buffer previous
 as.map("n", "<leader>bn", [[:enew<CR>]], { silent = false }) -- new buffer
 as.map("n", "<leader>bf", [[:e <C-R>=expand("%:p:h") . "/" <CR>]], { silent = false }) -- new file
 as.map("n", "<leader>bv", [[:vsp <C-R>=expand("%:p:h") . "/" <CR>]], { silent = false }) -- new split
+as.map('n', '<leader>s', ":lua require'hop'.hint_char2()<cr>")
+as.map('n', '<leader>S', ":lua require'hop'.hint_char1()<cr>")
 -----------------------------------------------------------------------------//
 -- tabs {{{1
 -----------------------------------------------------------------------------//
@@ -175,7 +179,7 @@ as.map("n", "<leader>zq", ":close<CR>")
 -----------------------------------------------------------------------------//
 -- as.map("n", "<leader>qs", ":SSave<CR>")
 -- as.map("n", "<leader>qq", ":SClose<CR>")
--- as.map("n", "<leader>qQ", ":quitall<CR>")
+as.map("n", "<leader>Q", ":quitall<CR>")
 -- as.map("n", "<leader>qd", ":SDelete<CR>")
 -- as.map("n", "<leader>ql", ":SLoad<CR>")
 -----------------------------------------------------------------------------//
