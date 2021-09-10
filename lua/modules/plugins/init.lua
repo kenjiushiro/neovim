@@ -67,7 +67,6 @@ local pack_use = function()
     -- Utils {{{1
     -----------------------------------------------------------------------------//
     use { "haya14busa/is.vim", keys = { "/", "*", "#" } }
-    use { "knubie/vim-kitty-navigator", run= 'cp ./*.py ~/.config/kitty/' }
     use {
         'phaazon/hop.nvim',
         as = 'hop',
