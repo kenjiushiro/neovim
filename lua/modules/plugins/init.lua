@@ -248,10 +248,10 @@ local pack_use = function()
     }
     use {
         "norcalli/nvim-colorizer.lua",
-        ft = { "html", "css", "javascript" },
+        ft = { "html", "css", "javascript", "vue" },
         cmd = { "ColorizerToggle", "ColorizerAttachToBuffer" },
         config = function()
-            require("colorizer").setup({ "html", "javascript", "css" }, {
+            require("colorizer").setup({ "html", "javascript", "css", "vue" }, {
                 RRGGBBAA = true,
                 rgb_fn = true,
                 hsl_fn = true,

@@ -122,6 +122,7 @@ as.map("n", "<leader>w=", "<C-w>=") -- equally high and width
 as.map("n", "<leader>wT", "<C-w>T") -- break out into a new tab
 as.map("n", "<leader>wr", "<C-w>x") -- replace current with next
 as.map("n", "<leader>;", "A;<Esc>") -- replace current with next
+as.map("n", "<leader>,", "A,<Esc>") -- replace current with next
 -----------------------------------------------------------------------------//
 -- Quickfix list mappings {{{1
 -----------------------------------------------------------------------------//
