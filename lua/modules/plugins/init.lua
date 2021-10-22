@@ -1,6 +1,8 @@
+require "impatient"
 local pack_use = function()
     local use = require("packer").use
     use { "wbthomason/packer.nvim" }
+    use { "lewis6991/impatient.nvim" }
     -----------------------------------------------------------------------------//
     -- Required by others {{{1
     -----------------------------------------------------------------------------//
@@ -40,7 +42,6 @@ local pack_use = function()
     -----------------------------------------------------------------------------//
     use {
         "nvim-telescope/telescope-fzf-native.nvim",
-        opt = true,
         run = "make",
     }
     use {
@@ -103,7 +104,11 @@ local pack_use = function()
         requires = "nvim-web-devicons",
         cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
         config = function()
-            require("modules.plugins.filetree").config()
+            require("nvim-tree").setup{
+                view = {
+                    side = 'right';
+                }
+            }
         end,
     }
     use {
