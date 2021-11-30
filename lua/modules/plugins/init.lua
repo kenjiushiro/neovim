@@ -37,6 +37,7 @@ local pack_use = function()
     }
     use { "hrsh7th/vim-vsnip", after = "nvim-compe" }
     use { "rafamadriz/friendly-snippets" }
+    use { "https://github.com/github/copilot.vim" }
     -----------------------------------------------------------------------------//
     -- Telescope {{{1
     -----------------------------------------------------------------------------//
@@ -46,7 +47,7 @@ local pack_use = function()
     }
     use {
         "nvim-telescope/telescope.nvim",
-        cmd = "Telescope",
+        requires = { {'nvim-lua/plenary.nvim'} },
         config = function()
             require("modules.plugins.telescope").config()
         end,
