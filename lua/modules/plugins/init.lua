@@ -19,7 +19,7 @@ local pack_use = function()
         end,
     }
     use {
-        "kabouzeid/nvim-lspinstall",
+        "williamboman/nvim-lsp-installer",
         after = "nvim-lspconfig",
         config = function()
             require "modules.lsp.servers"
@@ -37,7 +37,7 @@ local pack_use = function()
     }
     use { "hrsh7th/vim-vsnip", after = "nvim-compe" }
     use { "rafamadriz/friendly-snippets" }
-    use { "https://github.com/github/copilot.vim" }
+    -- use { "https://github.com/github/copilot.vim" }
     -----------------------------------------------------------------------------//
     -- Telescope {{{1
     -----------------------------------------------------------------------------//
