@@ -212,6 +212,8 @@ local pack_use = function()
             require("modules.plugins.indent-guides").config()
         end,
     }
+    use {'pangloss/vim-javascript'}
+    use {'mxw/vim-jsx'}
     -----------------------------------------------------------------------------//
     -- General plugins {{{1
     -----------------------------------------------------------------------------//
