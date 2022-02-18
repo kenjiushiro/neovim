@@ -25,6 +25,9 @@ local pack_use = function()
             require "modules.lsp.servers"
         end,
     }
+    use {
+        "jose-elias-alvarez/null-ls.nvim",
+    }
     -----------------------------------------------------------------------------//
     -- Completion and snippets {{{1
     -----------------------------------------------------------------------------//
@@ -41,13 +44,16 @@ local pack_use = function()
     -----------------------------------------------------------------------------//
     -- Telescope {{{1
     -----------------------------------------------------------------------------//
+    use "natecraddock/telescope-zf-native.nvim"
     use {
         "nvim-telescope/telescope-fzf-native.nvim",
+        cmd = "Telescope",
         run = "make",
     }
     use {
         "nvim-telescope/telescope.nvim",
-        requires = { {'nvim-lua/plenary.nvim'} },
+        -- requires = { {'nvim-lua/plenary.nvim'} },
+        cmd = "Telescope",
         config = function()
             require("modules.plugins.telescope").config()
         end,
