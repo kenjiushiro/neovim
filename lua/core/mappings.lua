@@ -81,6 +81,7 @@ as.map("n", "<TAB>", ":bnext<CR>") -- buffer next
 as.map("n", "<S-TAB>", ":bprevious<CR>") -- buffer previous
 as.map("n", "<leader>b<C-t>", ":lua require'core.util'.buf_to_tab()<CR>") -- focus in new tab
 as.map("n", "<leader>bb", ":Telescope buffers<CR>") -- all buffers
+as.map("n", "<leader>cp", ':let @+ = expand("%")<CR>') -- copy filepath to clipboard
 as.map("n", "<leader>w", ":update<CR>") -- save buffer
 as.map("n", "<leader>q", ":q<CR>") -- save buffer
 as.map("v", "<leader>w", "<ESC>:update<CR>") -- save buffer
