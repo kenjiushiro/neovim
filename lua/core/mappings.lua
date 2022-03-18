@@ -170,6 +170,15 @@ as.map("n", "<leader>fl", ":Telescope loclist<CR>")
 as.map("n", "<leader>fq", ":Telescope quickfix<CR>")
 as.map("n", "<leader>fn", ":Telescope fd cwd=$HOME/.config/nvim/<CR>")
 -----------------------------------------------------------------------------//
+-- DAP
+-----------------------------------------------------------------------------//
+as.map("n", "<leader>tb", ":lua require'dap'.toggle_breakpoint()<CR>")
+as.map("n", "<F5>", ":lua require'dap'.continue()<CR>")
+as.map("n", "<F10>", ":lua require'dap'.step_over()<CR>")
+as.map("n", "<F11>", ":lua require'dap'.step_into()<CR>")
+as.map("n", "<F12>", ":lua require'dap'.step_out()<CR>")
+as.map("n", "<leader>dl", ":lua require'dap'.run_last()<CR>")
+-----------------------------------------------------------------------------//
 -- Zen Mode {{{1
 -----------------------------------------------------------------------------//
 as.map("n", "<leader>zf", [[:lua require("modules.plugins.zen").focus()<CR>]])

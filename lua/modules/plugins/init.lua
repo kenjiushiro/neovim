@@ -1,4 +1,4 @@
--- require "impatient"
+pcall(require,"impatient")
 local pack_use = function()
     local use = require("packer").use
     use { "wbthomason/packer.nvim" }
@@ -72,6 +72,23 @@ local pack_use = function()
         end,
     }
     -----------------------------------------------------------------------------//
+    -- Debugging
+    -----------------------------------------------------------------------------//
+    use({ "mfussenegger/nvim-dap" })
+
+    use({
+        "rcarriga/nvim-dap-ui",
+        requires = { "mfussenegger/nvim-dap" },
+    })
+    use({
+        "Pocco81/DAPInstall.nvim",
+        requires = { "mfussenegger/nvim-dap" },
+    })
+    use({
+        "theHamsta/nvim-dap-virtual-text",
+        requires = { "mfussenegger/nvim-dap" },
+    })
+    -----------------------------------------------------------------------------//
     -- Utils {{{1
     -----------------------------------------------------------------------------//
     use { "haya14busa/is.vim", keys = { "/", "*", "#" } }
@@ -114,6 +131,7 @@ local pack_use = function()
             require("nvim-tree").setup{
                 view = {
                     side = 'right';
+                    width = 90;
                 }
             }
         end,
@@ -190,6 +208,7 @@ local pack_use = function()
             require("modules.plugins.git").gitlinker()
         end,
     }
+    use {'tpope/vim-fugitive'}
     -----------------------------------------------------------------------------//
     -- UI
     -----------------------------------------------------------------------------//
