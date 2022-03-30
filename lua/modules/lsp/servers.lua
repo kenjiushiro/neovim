@@ -136,6 +136,16 @@ local lua_settings = {
     },
 }
 
+require('lspconfig').eslint.setup {
+  cmd = { 'vscode-eslint-language-server.cmd', '--stdio' },
+}
+
+require("null-ls").setup({
+  sources = {
+    require("null-ls").builtins.diagnostics.eslint,
+  },
+})
+
 require("nvim-lsp-installer").on_server_ready(function(server)
     local opts = {
         -- enable snippet support
