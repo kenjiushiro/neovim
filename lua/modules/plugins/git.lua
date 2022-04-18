@@ -10,6 +10,7 @@ M.gitsigns = function()
             changedelete = { hl = "GitSignsChange", text = "~" },
         },
         keymaps = { noremap = true, buffer = true },
+        current_line_blame = true,
     }
 end
 
