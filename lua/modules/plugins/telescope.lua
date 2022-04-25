@@ -20,7 +20,6 @@ M.config = function()
             layout_config = { height = 0.75, width = 0.8 },
             file_ignore_patterns = {
                 "node_modules",
-                "package.json",
                 "package-lock.json",
                 ".git/",
                 ".mkv",
