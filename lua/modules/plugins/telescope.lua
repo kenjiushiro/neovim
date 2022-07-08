@@ -33,7 +33,6 @@ M.config = function()
                 ".m4a",
                 ".opus",
                 ".flac",
-                ".doc",
                 ".zip",
                 ".odt",
                 ".ots",

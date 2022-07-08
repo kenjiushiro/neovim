@@ -31,6 +31,9 @@ local pack_use = function()
     -----------------------------------------------------------------------------//
     -- Completion and snippets {{{1
     -----------------------------------------------------------------------------//
+    -- use { "ms-jpq/coq_nvim" }
+    -- use { "ms-jpq/coq.artifacts" }
+    -- use { "ms-jpq/coq.thirdparty" }
     use {
         "hrsh7th/nvim-compe",
         event = "InsertEnter",
@@ -123,6 +126,7 @@ local pack_use = function()
             require("modules.plugins.formatter").config()
         end,
     }
+    use {"https://github.com/prettier/vim-prettier"}
     use {
         "kyazdani42/nvim-tree.lua",
         requires = "nvim-web-devicons",
@@ -239,6 +243,11 @@ local pack_use = function()
     }
     use {'pangloss/vim-javascript'}
     use {'mxw/vim-jsx'}
+    -----------------------------------------------------------------------------//
+    -- Database
+    -----------------------------------------------------------------------------//
+    use { "https://github.com/tpope/vim-dadbod" }
+    use { "https://github.com/kristijanhusak/vim-dadbod-ui" }
     -----------------------------------------------------------------------------//
     -- General plugins {{{1
     -----------------------------------------------------------------------------//

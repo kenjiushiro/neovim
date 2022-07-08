@@ -82,7 +82,7 @@ as.map("n", "<S-TAB>", ":bprevious<CR>") -- buffer previous
 as.map("n", "<leader>b<C-t>", ":lua require'core.util'.buf_to_tab()<CR>") -- focus in new tab
 as.map("n", "<leader>bb", ":Telescope buffers<CR>") -- all buffers
 as.map("n", "<leader>cp", ':let @+ = expand("%")<CR>') -- copy filepath to clipboard
-as.map("n", "<leader>w", ":update<CR>") -- save buffer
+as.map("n", "<leader>w", ":PrettierAsync<CR>:update<CR>") -- save buffer
 as.map("n", "<leader>q", ":q<CR>") -- save buffer
 as.map("v", "<leader>w", "<ESC>:update<CR>") -- save buffer
 as.map("n", "<leader>bS", ":silent! wa<CR>") -- save all buffers
@@ -216,4 +216,5 @@ as.map("n", "<leader>rq", ":cwindow<CR>")
 as.map("n", "<leader>rl", ":lwindow<CR>")
 as.map("n", "<leader>rJ", [[:<C-u>call append(line("."), repeat([""], v:count1))<CR>]]) -- append line down without insert mode
 as.map("n", "<leader>rK", [[:<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>]]) -- append line up without insert mode
+as.map('n', '<leader>db', ":DBUI<CR>")
 -- }}}
