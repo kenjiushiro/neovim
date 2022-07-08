@@ -140,18 +140,6 @@ local pack_use = function()
             }
         end,
     }
-    use {
-        "akinsho/nvim-toggleterm.lua",
-        keys = "<A-t>",
-        cmd = "ToggleTerm",
-        config = function()
-            require("toggleterm").setup {
-                size = 20,
-                direction = "horizontal",
-                open_mapping = [[<a-t>]],
-            }
-        end,
-    }
     -----------------------------------------------------------------------------//
     -- Improve Editing {{{1
     -----------------------------------------------------------------------------//
