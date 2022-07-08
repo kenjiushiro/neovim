@@ -127,19 +127,8 @@ local pack_use = function()
         end,
     }
     use {"https://github.com/prettier/vim-prettier"}
-    use {
-        "kyazdani42/nvim-tree.lua",
-        requires = "nvim-web-devicons",
-        cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
-        config = function()
-            require("nvim-tree").setup{
-                view = {
-                    side = 'right';
-                    width = 90;
-                }
-            }
-        end,
-    }
+    use {'https://github.com/ms-jpq/chadtree'}
+    require("modules.plugins.chadtree")
     -----------------------------------------------------------------------------//
     -- Improve Editing {{{1
     -----------------------------------------------------------------------------//
