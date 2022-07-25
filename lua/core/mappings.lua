@@ -82,7 +82,8 @@ as.map("n", "<S-TAB>", ":bprevious<CR>") -- buffer previous
 as.map("n", "<leader>b<C-t>", ":lua require'core.util'.buf_to_tab()<CR>") -- focus in new tab
 as.map("n", "<leader>bb", ":Telescope buffers<CR>") -- all buffers
 as.map("n", "<leader>cp", ':let @+ = expand("%")<CR>') -- copy filepath to clipboard
-as.map("n", "<leader>w", ":PrettierAsync<CR>:update<CR>") -- save buffer
+as.map("n", "<leader>w", ":update<CR>") -- save buffer
+as.map("n", "<leader>W", ":Prettier<CR>:update<CR>") -- save buffer
 as.map("n", "<leader>q", ":q<CR>") -- save buffer
 as.map("v", "<leader>w", "<ESC>:update<CR>") -- save buffer
 as.map("n", "<leader>bS", ":silent! wa<CR>") -- save all buffers
@@ -97,6 +98,14 @@ as.map("n", "<leader>bf", [[:e <C-R>=expand("%:p:h") . "/" <CR>]], { silent = fa
 as.map("n", "<leader>bv", [[:vsp <C-R>=expand("%:p:h") . "/" <CR>]], { silent = false }) -- new split
 as.map('n', '<leader>s', ":lua require'hop'.hint_char2()<cr>")
 as.map('n', '<leader>S', ":lua require'hop'.hint_char1()<cr>")
+-----------------------------------------------------------------------------//
+-- tests {{{1
+-----------------------------------------------------------------------------//
+as.map('n', '<leader>tef', ":TestFile -strategy=neovim<CR>")
+as.map('n', '<leader>ten', ":TestNearest -strategy=neovim<CR>")
+as.map('n', '<leader>tel', ":TestLast -strategy=neovim<CR>")
+as.map('n', '<leader>tev', ":TestVisit -strategy=neovim<CR>")
+as.map('n', '<leader>tes', ":TestSuite -strategy=neovim<CR>")
 -----------------------------------------------------------------------------//
 -- tabs {{{1
 -----------------------------------------------------------------------------//
@@ -172,12 +181,14 @@ as.map("n", "<leader>fn", ":Telescope fd cwd=$HOME/.config/nvim/<CR>")
 -----------------------------------------------------------------------------//
 -- DAP
 -----------------------------------------------------------------------------//
-as.map("n", "<leader>tb", ":lua require'dap'.toggle_breakpoint()<CR>")
-as.map("n", "<F5>", ":lua require'dap'.continue()<CR>")
-as.map("n", "<F10>", ":lua require'dap'.step_over()<CR>")
-as.map("n", "<F11>", ":lua require'dap'.step_into()<CR>")
-as.map("n", "<F12>", ":lua require'dap'.step_out()<CR>")
-as.map("n", "<leader>dl", ":lua require'dap'.run_last()<CR>")
+as.map("n", "<leader>tb", ":DapToggleBreakpoint<CR>")
+as.map("n", "<leader>da", ":lua require'modules.plugins.dap'.attach()<CR>")
+as.map("n", "<leader>dA", ":lua require'modules.plugins.dap'.attach9300()<CR>")
+as.map("n", "<F5>", ":DapContinue<CR>")
+as.map("n", "<F9>", ":DapStepOver<CR>")
+as.map("n", "<F10>", ":DapStepInto<CR>")
+as.map("n", "<F11>", ":DapStepOut<CR>")
+as.map("n", "<leader>rep", ":DapToggleRepl<CR>")
 -----------------------------------------------------------------------------//
 -- Zen Mode {{{1
 -----------------------------------------------------------------------------//
@@ -206,8 +217,6 @@ as.map("n", "<leader>rb", ":Telescope file_browser<CR>")
 as.map("n", "<leader>r.", ":NvimTreeFindFile<CR>")
 as.map("n", "<leader>rf", ":Format<CR>")
 as.map("v", "<leader>f", ":Format<CR>")
-as.map("n", "<leader>re", ":NvimTreetoggle<CR>")
-as.map("n", "<leader>ru", ":UndotreeToggle<CR>")
 as.map("n", "<leader>rn", ":vsp ~/.config/nvim/lua/config.lua<CR>")
 as.map("n", "<leader>rca", ":ColorizerAttachToBuffer<CR>")
 as.map("n", "<leader>rct", ":ColorizerToggle<CR>")
@@ -217,4 +226,5 @@ as.map("n", "<leader>rl", ":lwindow<CR>")
 as.map("n", "<leader>rJ", [[:<C-u>call append(line("."), repeat([""], v:count1))<CR>]]) -- append line down without insert mode
 as.map("n", "<leader>rK", [[:<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>]]) -- append line up without insert mode
 as.map('n', '<leader>db', ":DBUI<CR>")
+as.map('n', '<leader>re', ":CocCommand rest-client.request<CR>")
 -- }}}

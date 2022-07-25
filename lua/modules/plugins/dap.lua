@@ -1,34 +1,67 @@
+local dap = require('dap')
+
+local function debugJest(testName, filename)
+  print("starting " .. testName .. " in " .. filename)
+  dap.run({
+      type = 'node2',
+      request = 'launch',
+      cwd = vim.fn.getcwd(),
+      runtimeArgs = {'--inspect-brk', '/usr/local/bin/jest', '--no-coverage', '-t', testName, '--', filename},
+      sourceMaps = true,
+      protocol = 'inspector',
+      skipFiles = {'<node_internals>/**/*.js'},
+      console = 'integratedTerminal',
+      port = 9229,
+      })
+end
+
+local function attach()
+  print("attaching to 9229")
+  dap.run({
+      type = 'node2',
+      request = 'attach',
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      protocol = 'inspector',
+      skipFiles = {'<node_internals>/**/*.js'},
+      })
+end
+local function attach9300()
+  print("attaching to 9300")
+  dap.run({
+      type = 'node2',
+      request = 'attach',
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      protocol = 'inspector',
+      skipFiles = {'<node_internals>/**/*.js'},
+      port = 9300,
+      })
+end
 return {
+    attach = attach,
+    attach9300 = attach9300,
+    debugJest = debugJest,
     setup = function()
-        local dap = require("dap")
-
-        dap.adapters.firefox = {
-            type = "executable",
-            command = "yarn",
-            args = {
-                "node",
-                os.getenv("HOME") .. "/build/vscode-firefox-debug/dist/adapter.bundle.js",
-            },
-        }
-
         dap.adapters.node2 = {
             type = "executable",
-            command = "yarn",
+            command = "node",
             args = {
-                "node",
-                os.getenv("HOME") .. "/build/vscode-node-debug2/out/src/nodeDebug.js",
+                os.getenv("HOME") .. "/.config/debuggers/vscode-node-debug2/out/src/nodeDebug.js",
             },
         }
 
         dap.configurations.typescript = {
-            name = "Debug with Firefox",
-            type = "firefox",
-            request = "launch",
-            reAttach = true,
-            sourceMaps = true,
-            url = "ws://127.0.0.1:9229/0c98ba8d-5cb0-4de4-bb3b-e7e839d0da55",
-            webRoot = "${workspaceFolder}",
-            firefoxExecutable = "/usr/bin/firefox",
+            {
+              type = "node2",
+              name = "Debug",
+              request = "attach",
+              protocol = "inspector",
+              restart = true,
+              sourceMaps = true,
+              skipFiles = { "<node_internals>/**" },
+              outFiles = { "${workspaceFolder}/**/*.js" }
+            }
         }
 
         dap.configurations.typescriptreact = {
@@ -42,16 +75,6 @@ return {
             firefoxExecutable = "/usr/bin/firefox",
         }
 
-        dap.configurations.javascript = {
-            name = "Debug with Firefox",
-            type = "firefox",
-            request = "launch",
-            reAttach = true,
-            sourceMaps = true,
-            url = "http://localhost:6969",
-            webRoot = "${workspaceFolder}",
-            firefoxExecutable = "/usr/bin/firefox",
-        }
 
         dap.configurations.typescriptreact = {
             {
@@ -73,42 +96,6 @@ return {
             },
         }
 
-        -- lldb/rust
-        dap.adapters.lldb = {
-            type = "executable",
-            command = "/usr/bin/lldb-vscode", -- adjust as needed
-            name = "lldb",
-        }
-
-        dap.configurations.rust = {
-            {
-                name = "Launch",
-                type = "lldb",
-                request = "launch",
-                program = function()
-                    return vim.fn.input(
-                    "Path to executable: ",
-                    vim.fn.getcwd() .. "/",
-                    "file"
-                    )
-                end,
-                cwd = "${workspaceFolder}",
-                stopOnEntry = false,
-                args = {},
-
-                -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
-                --
-                --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-                --
-                -- Otherwise you might get the following error:
-                --
-                --    Error on launch: Failed to attach to the target process
-                --
-                -- But you should be aware of the implications:
-                -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
-                runInTerminal = false,
-            },
-        }
 
         -- setup extensions
         require("nvim-dap-virtual-text").setup()
