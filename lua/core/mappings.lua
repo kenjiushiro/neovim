@@ -188,6 +188,8 @@ as.map("n", "<leader>dr", ":DapToggleRepl<CR>")
 as.map("n", "<leader>da", ":lua require'modules.plugins.dap'.attach()<CR>")
 as.map("n", "<leader>dp", ":lua require'modules.plugins.dap'.attachToPort()<CR>")
 as.map("n", "<leader>dt", ":lua require'modules.plugins.dap'.debugJest()<CR>")
+as.map("n", "<leader>dui", ":lua require'dapui'.toggle()<CR>")
+as.map("n", "<leader>de", ":lua require'dapui'.eval()<CR>")
 
 as.map("n", "<F5>", ":DapContinue<CR>")
 as.map("n", "<F6>", ":DapStepOver<CR>")

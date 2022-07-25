@@ -23,9 +23,9 @@ local function common_on_attach(client, bufnr)
     as.map("n", "<leader>lgi", ":lua vim.lsp.buf.implementation()<CR>")
     as.map("n", "<leader>lh", ":lua vim.lsp.buf.hover()<CR>")
     as.map("n", "<leader>lk", ":lua vim.lsp.buf.signature_help()<CR>")
-    as.map("n", "<leader>la", ":Telescope lsp_code_actions<CR>")
+    as.map("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>")
     as.map("n", "<leader>lc", ":lua vim.diagnostic.hide()<CR>")
-    as.map("n", "<leader>lA", ":Telescope lsp_range_code_actions<CR>")
+    as.map("n", "<leader>lA", ":lua vim.lsp.buf.range_code_action()<CR>")
     as.map("n", "<leader>ld", ":Telescope lsp_document_diagnostics<CR>")
     as.map("n", "<leader>lD", ":Telescope lsp_workspace_diagnostics<CR>")
     as.map("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>")
@@ -135,16 +135,6 @@ local lua_settings = {
         },
     },
 }
-
-require('lspconfig').eslint.setup {
-  cmd = { 'vscode-eslint-language-server.cmd', '--stdio' },
-}
-
-require("null-ls").setup({
-  sources = {
-    require("null-ls").builtins.diagnostics.eslint,
-  },
-})
 
 require("nvim-lsp-installer").on_server_ready(function(server)
     local opts = {
