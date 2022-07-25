@@ -26,8 +26,10 @@ local function attach()
       skipFiles = {'<node_internals>/**/*.js'},
       })
 end
-local function attach9300()
-  print("attaching to 9300")
+local function attachToPort()
+  local port = vim.fn.input('Debugger port?: ')
+  print("attaching to " .. port)
+  
   dap.run({
       type = 'node2',
       request = 'attach',
@@ -35,12 +37,17 @@ local function attach9300()
       sourceMaps = true,
       protocol = 'inspector',
       skipFiles = {'<node_internals>/**/*.js'},
-      port = 9300,
+      port = port,
       })
 end
+vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='➡️', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapLogPoint', {text='📝', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text='👀', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointRejected', {text='🚨', texthl='', linehl='', numhl=''})
 return {
     attach = attach,
-    attach9300 = attach9300,
+    attachToPort = attachToPort,
     debugJest = debugJest,
     setup = function()
         dap.adapters.node2 = {
@@ -62,6 +69,12 @@ return {
               skipFiles = { "<node_internals>/**" },
               outFiles = { "${workspaceFolder}/**/*.js" }
             }
+        }
+
+        dap.adapters.python = {
+          type = 'executable';
+          command = 'path/to/virtualenvs/debugpy/bin/python';
+          args = { '-m', 'debugpy.adapter' };
         }
 
         dap.configurations.typescriptreact = {

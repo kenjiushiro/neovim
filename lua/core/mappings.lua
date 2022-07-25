@@ -182,12 +182,16 @@ as.map("n", "<leader>fn", ":Telescope fd cwd=$HOME/.config/nvim/<CR>")
 -- DAP
 -----------------------------------------------------------------------------//
 as.map("n", "<leader>tb", ":DapToggleBreakpoint<CR>")
+as.map("n", "<leader>tc", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+as.map("n", "<leader>tl", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 as.map("n", "<leader>da", ":lua require'modules.plugins.dap'.attach()<CR>")
-as.map("n", "<leader>dA", ":lua require'modules.plugins.dap'.attach9300()<CR>")
+as.map("n", "<leader>dA", ":lua require'modules.plugins.dap'.attachToPort()<CR>")
+as.map("n", "<leader>dj", ":lua require'modules.plugins.dap'.debugJest()<CR>")
+
 as.map("n", "<F5>", ":DapContinue<CR>")
-as.map("n", "<F9>", ":DapStepOver<CR>")
-as.map("n", "<F10>", ":DapStepInto<CR>")
-as.map("n", "<F11>", ":DapStepOut<CR>")
+as.map("n", "<F6>", ":DapStepOver<CR>")
+as.map("n", "<F9>", ":DapStepInto<CR>")
+as.map("n", "<F10>", ":DapStepOut<CR>")
 as.map("n", "<leader>rep", ":DapToggleRepl<CR>")
 -----------------------------------------------------------------------------//
 -- Zen Mode {{{1
