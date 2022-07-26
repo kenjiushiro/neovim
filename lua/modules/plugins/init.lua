@@ -31,16 +31,17 @@ local pack_use = function()
     -----------------------------------------------------------------------------//
     -- Completion and snippets {{{1
     -----------------------------------------------------------------------------//
-    -- use { "ms-jpq/coq_nvim" }
-    -- use { "ms-jpq/coq.artifacts" }
-    -- use { "ms-jpq/coq.thirdparty" }
-    use {
-        "hrsh7th/nvim-compe",
-        event = "InsertEnter",
-        config = function()
-            require("modules.plugins.completion").compe()
-        end,
-    }
+    use { "ms-jpq/coq_nvim" }
+    use { "ms-jpq/coq.artifacts" }
+    use { "ms-jpq/coq.thirdparty" }
+    require'modules.plugins.coq'
+    -- use {
+    --     "hrsh7th/nvim-compe",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("modules.plugins.completion").compe()
+    --     end,
+    -- }
     use { "hrsh7th/vim-vsnip", after = "nvim-compe" }
     use { "rafamadriz/friendly-snippets" }
     -- use { "https://github.com/github/copilot.vim" }
